@@ -4,6 +4,8 @@
 #include <PubSubClient.h>
 #include <SimpleDHT.h>
 
+
+// npm install -g --unsafe-perm node-red
 SimpleDHT11 dht11;
 int tempValue;
 int humidValue;
