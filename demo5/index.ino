@@ -5,6 +5,13 @@
 #include <SimpleDHT.h>
 
 
+SimpleDHT11 dht11;
+int tempValue;
+int humidValue;
+int oldTempValue = 0;
+int pinDHT11 = D2; 
+
+
 void setup()
 {
     Serial.begin(115200);
