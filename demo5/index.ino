@@ -11,6 +11,14 @@ int humidValue;
 int oldTempValue = 0;
 int pinDHT11 = D2; 
 
+const char* mqtt_server = "broker.mqtt-dashboard.com";
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+long lastMsg = 0;
+char msg[50];
+const char* topic = "cm/sensors/dht11";
+
 
 void setup()
 {
