@@ -1,6 +1,8 @@
 #include <ESP8266WiFi.h>
 #define WIFI_SSID "cm_guest"
 #define WIFI_PASSWORD "87654321"
+#include <PubSubClient.h>
+#include <SimpleDHT.h>
 
 
 void setup()
