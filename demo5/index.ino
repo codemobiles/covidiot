@@ -16,13 +16,17 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
 char msg[50];
-const char *topic = "cm/sensors/dht11";
+const char *topic = "cmlek/sensors/dht11";
 
 void setup()
 {
     Serial.begin(115200);
     pinMode(LED_BUILTIN, OUTPUT);
     getWiFiIPAddress();
+
+    // Connect MQTT Server
+    client.setServer(mqtt_server, 1883);
+    client.setCallback(callback);
 }
 
 void loop()
