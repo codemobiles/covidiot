@@ -9,12 +9,13 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
 char msg[50];
-const char *topic = "cmlek/infrared/dht11";
+const char *topic = "cmlek/infrareds/ir1";
 
 // Infrared
 #define IRsensor 5 // 5 = D1, 4 = D2
 long lastTimestamp = 0;
 int count = 0;
+int lastCount = 0;
 
 void setup()
 {
@@ -40,8 +41,12 @@ void loop()
     client.loop();
 
     // Publish Infrared begin
-    snprintf(msg, 75, "{\"Counter\" : %ld}", count);
-    client.publish(topic, msg);
+    if (lastCount != count)
+    {
+        snprintf(msg, 75, "{\"Counter\" : %ld}", count);
+        client.publish(topic, msg);
+        lastCount = count;
+    }
     // Publish Infrared end
 }
 
